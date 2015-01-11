@@ -1,18 +1,22 @@
+using System.Collections.Generic;
+using Recipes.Contracts;
+
 namespace Recipes.Domain
 {
-	public class RecipeAggregate : IAggregate
+	public class RecipeAggregate : AggregateBase<RecipeAggregate>
 	{
-		public int Id { get; private set; }
-		public int Version { get; private set; }
-
-		public RecipeAggregate(int id)
+		public RecipeAggregate(IEnumerable<object> events = null) : base(events)
 		{
-			Id = id;
 		}
 		
-		public void Create(string name, string category, string userName)
+		public void Create(int id, string name, string category, string userName)
 		{
-			// TODO
+			Apply(new RecipeCreated(id, name, category, userName));
+		}
+
+		private void When(RecipeCreated e)
+		{
+			Id = e.Id;
 		}
 	}
 }

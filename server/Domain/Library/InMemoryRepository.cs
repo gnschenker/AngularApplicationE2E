@@ -30,7 +30,7 @@ namespace Recipes.Domain
 		private IAggregate GetNewInstance<T>(int id) where T : IAggregate
 		{
 			if(typeof(T) == typeof(RecipeAggregate))
-				return new RecipeAggregate(id);
+				return new RecipeAggregate();
 
 			throw new ArgumentException("Unexpected aggregate type");
 		}

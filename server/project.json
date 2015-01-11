@@ -8,7 +8,9 @@
         "Microsoft.AspNet.Security.Cookies": "1.0.0-beta1",
         "Microsoft.AspNet.Server.WebListener": "1.0.0-beta1",
         "Microsoft.AspNet.StaticFiles": "1.0.0-beta1",
-        "Kestrel": "1.0.0-beta1"
+        "Kestrel": "1.0.0-beta1",
+        "Newtonsoft.Json": "6.0.7",
+        "EventStore.Client": "3.0.1"
     },
     "commands": {
         "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5001",

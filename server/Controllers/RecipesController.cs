@@ -9,19 +9,18 @@ namespace Recipes.Controllers
     [Route("api/[controller]")]
     public class RecipesController : Controller
     {
-        private readonly IRecipeApplicationService service;
-            // = new RecipeApplicationService(new InMemoryRepository(), new UniqueKeyGenerator());
+        private readonly RecipeApplicationService service;
 
-        public RecipesController(IRecipeApplicationService service)
+        public RecipesController(RecipeApplicationService service)
         {
             this.service = service;
         }
 
         [Route("create")]
         [HttpPost]
-        public int Create(CreateRecipeCommand cmd)
+        public int Create([FromBody]CreateRecipeCommand cmd)
         {
-            Console.WriteLine("creating recipe...");
+            Console.WriteLine("creating recipe...{0}", cmd);
             var newId = service.When(cmd.ToInternal());
             return newId;
         }
